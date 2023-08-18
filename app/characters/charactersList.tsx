@@ -3,6 +3,7 @@
 import getAllCharacters from '../../lib/getAllCharacters';
 import { characterData } from '../types/characterData';
 import Link from 'next/link';
+import Placeholder from "../assets/placeholder.png"
 
 interface AllCharacters {
     data: characterData
@@ -22,27 +23,20 @@ export default async function CharactersList() {
     const characters = await fetchAllCharacters();
 
     return (
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <div className="grid grid-cols-4 gap-4 mt-4 p-2">
             {characters?.map((character: any) => (
-                <div key={character?.id} className="max-w-sm overflow-hidden rounded shadow-lg">
-                    <img className="w-full" src={character?.image} alt={character.name} />
+                <div key={character?.id} className="max-w-sm overflow-hidden rounded shadow-lg ">
+                    {character?.image ? <img className="w-full" src={character?.image} alt={character?.name} /> : <img className="w-full" src={Placeholder.src} alt={character?.name} />}
                     <div className="px-6 py-4">
                         <div className="mb-2 text-xl font-bold"> {character?.name} {character?.lastname}</div>
-                        <div className="mb-2 text-xl font-bold"> {character?.age} ans</div>
-                        <div>Pays de naissance : {character?.country}</div>
-                        <div className="mb-2 text-xl font-bold">
-                            âge : {character?.birth}
-                        </div>
-                        {character?.is_alive}
                         <Link href={`/characters/${character?.id}`}>
-                            <button>
-                                infos
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                                Infos
                             </button>
-                        </Link>
 
+                        </Link>
                     </div>
                 </div>
-
             ))}
         </div>
     );
