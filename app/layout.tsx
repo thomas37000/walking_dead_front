@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Link from 'next/link'
+import Header from './components/Header'
 
 export const metadata: Metadata = {
   title: 'The Walking Dead Api',
@@ -16,11 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bgWk">
-        <nav>
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/characters">Tout les personnages</Link></li>
-          <li><Link href="/about">About</Link></li>
-        </nav>
+        <Header />
         {children}</body>
     </html>
   )

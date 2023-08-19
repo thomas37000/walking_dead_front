@@ -1,8 +1,12 @@
+import MainLayout from '../components/Main';
 export default function About() {
     return (
-        <div>
-            About
-        </div>
+        <MainLayout>
+            <div className=''>
+                About
+            </div>
+        </MainLayout>
+
     );
 };
 
