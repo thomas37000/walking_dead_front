@@ -10,8 +10,14 @@ interface AllCharacters {
 }
 
 async function fetchAllCharacters() {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
     try {
-        const res = await fetch("http://localhost:8000/characters", { cache: 'no-store' });
+        const res = await fetch("http://localhost:8000/characters", {
+            next: {
+                revalidate: 0
+            }, cache: 'no-store'
+        });
 
         return await res.json();
     } catch (error) {
