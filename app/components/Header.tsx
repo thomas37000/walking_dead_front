@@ -22,7 +22,7 @@ export default function Header() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link href="/characters/new-character" className='font-bold text-sm'>Ajouter un nouveau personnage</Link>
             </div>
         </div>
     );

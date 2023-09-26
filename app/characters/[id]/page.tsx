@@ -33,7 +33,7 @@ export default async function CharacterDetail({ params }: any) {
                     {character?.image ? <img className="w-full" src={character?.image} alt={character?.name} /> : <img className="w-full" src={Placeholder.src} alt={character?.name} />}
                     <div className="px-6 py-4">
                         <div className="mb-2 text-xl font-bold"> {character?.name} {character?.lastname}</div>
-                        <div className="mb-2 text-xl font-bold"> {character?.age} ans</div>
+                        <div className="mb-2 text-xl font-bold"> {character?.age ? `${character?.age} ans` : ""}</div>
                         <div>Pays de naissance : {character?.country}</div>
                         <div> {character?.is_alive}</div>
                     </div>

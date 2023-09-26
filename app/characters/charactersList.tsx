@@ -15,8 +15,8 @@ async function fetchAllCharacters() {
     try {
         const res = await fetch("http://localhost:8000/characters", {
             next: {
-                revalidate: 0
-            }, cache: 'no-store'
+                revalidate: 60
+            }
         });
 
         return await res.json();
@@ -31,7 +31,7 @@ export default async function CharactersList() {
     return (
         <div className="grid grid-cols-4 gap-4 mt-4 p-2">
             {characters?.map((character: any) => (
-                <div key={character?.id} className="max-w-sm overflow-hidden rounded shadow-lg ">
+                <div key={character?.id} className="max-w-sm overflow-hidden rounded shadow-lg bg-white">
                     {character?.image ? <img className="w-full" src={character?.image} alt={character?.name} /> : <img className="w-full" src={Placeholder.src} alt={character?.name} />}
                     <div className="px-6 py-4">
                         <div className="mb-2 text-xl font-bold"> {character?.name} {character?.lastname}</div>
